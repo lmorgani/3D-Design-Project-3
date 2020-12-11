@@ -1,0 +1,14 @@
+******IMPORTANT: READ_ME*******
+After EACH press you must wait until the serial monitor reads 
+"off" - THEN you must hold down the button just before the cycle restarts. 
+If the serial monitor does NOT read "off" after a loop,
+you must either WAIT until it does, or restart the upload.
+
+Sources:
+www.instructables.com/Controlling-Multiple-LEDs-With-an-Arduino-Uno/
+www.instructables.com/Musical-Snow-Globe/
+www.arduino.cc/en/Tutorial/BuiltInExamples/StateChangeDetection
+www.arduino.cc/reference/en/language/structure/control-structure/while/
+www.arduino.cc/reference/en/language/structure/control-structure/return/
+www.arduino.cc/en/Tutorial/BuiltInExamples/Debounce
+www.arduino.cc/en/Tutorial/Tone
