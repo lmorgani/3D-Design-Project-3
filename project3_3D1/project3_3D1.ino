@@ -14,6 +14,10 @@
   https://www.instructables.com/Musical-Snow-Globe/
   Melody
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/StateChangeDetection
+  To help detect the next button press easier
+  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Debounce
+  To reset the loop (set push button counter back to 0 after 6)
+  https://forum.arduino.cc/index.php?topic=319503.0
 
   Plays a melody
 
@@ -28,6 +32,12 @@
 
   http://www.arduino.cc/en/Tutorial/Tone
 */
+
+//******IMPORTANT: READ_ME*******
+//After EACH press you must wait until the serial monitor reads "off" - 
+//THEN you must hold down the button just before the cycle restarts. 
+//If the serial monitor does NOT read "off" after a loop,
+//you must either WAIT until it does, or restart the upload.
 
 #include "pitches.h"
 
@@ -122,18 +132,22 @@ void loop() {
       Serial.println("off");
     }
     // Delay a little bit to avoid bouncing
-    delay(50);
+    delay(30);
   }
   // save the current state as the last state, for next time through the loop
   lastButtonState = buttonState;
+//  if the button has been pushed once, 
+//  only the first LED will turn on & the firstRoom tune will play
   if (buttonPushCounter == 1) { 
     digitalWrite(ledPins[0], HIGH);
     digitalWrite(ledPins[1], LOW);
     digitalWrite(ledPins[2], LOW);
     digitalWrite(ledPins[3], LOW);
     digitalWrite(ledPins[4], LOW); 
-//    play_firstRoom();
+    play_firstRoom();
   }
+  //  if the button has been pushed twice, 
+//  only the first 2 LEDs will turn on & the secondRoom tune will play
   if (buttonPushCounter == 2) {  
     digitalWrite(ledPins[0], HIGH);
     digitalWrite(ledPins[1], HIGH);
@@ -142,6 +156,8 @@ void loop() {
     digitalWrite(ledPins[4], LOW);
     play_secondRoom();
     }
+      //  if the button has been pushed three times, 
+//  only the first 3 LEDs will turn on & the thirdRoom tune will play
   if (buttonPushCounter == 3) { 
     digitalWrite(ledPins[0], HIGH);
     digitalWrite(ledPins[1], HIGH);
@@ -150,6 +166,8 @@ void loop() {
     digitalWrite(ledPins[4], LOW);
     play_thirdRoom();
     }
+          //  if the button has been pushed four times, 
+//  only the first 4 LEDs will turn on & the fourthRoom tune will play
   if (buttonPushCounter == 4) {  
     digitalWrite(ledPins[0], HIGH);
     digitalWrite(ledPins[1], HIGH);
@@ -158,6 +176,8 @@ void loop() {
     digitalWrite(ledPins[4], LOW);
     play_fourthRoom();
     }
+              //  if the button has been pushed five times, 
+//  all 5 LEDs will turn on & the fifthRoom tune will play
   if (buttonPushCounter == 5) { 
     digitalWrite(ledPins[0], HIGH);
     digitalWrite(ledPins[1], HIGH);
@@ -166,11 +186,20 @@ void loop() {
     digitalWrite(ledPins[4], HIGH);
     play_fifthRoom();
    }
+   if (buttonPushCounter >= 6) {
+    (buttonPushCounter = 0);
+    digitalWrite(ledPins[0], LOW);
+    digitalWrite(ledPins[1], LOW);
+    digitalWrite(ledPins[2], LOW);
+    digitalWrite(ledPins[3], LOW);
+    digitalWrite(ledPins[4], LOW);
+   }
    
   else{
     noTone(9);
     digitalWrite(ledPins, LOW);
   }
+//  while , notone, return
   
  Serial.println(buttonState);
 }
