@@ -5,10 +5,15 @@ If the serial monitor does NOT read "off" after a loop,
 you must either WAIT until it does, or restart the upload.
 
 Sources:
-www.instructables.com/Controlling-Multiple-LEDs-With-an-Arduino-Uno/
-www.instructables.com/Musical-Snow-Globe/
-www.arduino.cc/en/Tutorial/BuiltInExamples/StateChangeDetection
-www.arduino.cc/reference/en/language/structure/control-structure/while/
-www.arduino.cc/reference/en/language/structure/control-structure/return/
-www.arduino.cc/en/Tutorial/BuiltInExamples/Debounce
-www.arduino.cc/en/Tutorial/Tone
+To control the LEDs with one button.
+  www.instructables.com/Controlling-Multiple-LEDs-With-an-Arduino-Uno/
+Reference to cycling through different tones with a button.
+  www.instructables.com/Musical-Snow-Globe/
+Reference to help with detecting button presses.
+  www.arduino.cc/en/Tutorial/BuiltInExamples/StateChangeDetection
+To help with creating and inserting the sound.
+  www.arduino.cc/en/Tutorial/Tone
+To help detect the next button press easier
+  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Debounce
+To reset the loop (set push button counter back to 0 after 6)
+  https://forum.arduino.cc/index.php?topic=319503.0
